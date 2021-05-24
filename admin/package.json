@@ -1,0 +1,25 @@
+{
+  "name": "auth",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "build": "zip -r build/sk2app.zip node_modules routes service *.js"
+  },
+  "dependencies": {
+    "async-request": "^1.2.0",
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.17.1",
+    "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.4",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "moment": "^2.16.0",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "node-schedule": "^1.3.2",
+    "nodemailer": "^6.4.2",
+    "request": "^2.88.0",
+    "string-random": "^0.1.3"
+  }
+}
