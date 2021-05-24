@@ -277,7 +277,7 @@ router.get('/approve', async (req, res) => {
                         
                         // 6. send email
                         let title = 'Whitelist Request has been Approved';
-                        let url = art_base + '/ui/repos/tree/General/' + generic_repo_path + '/' + req.query.name;
+                        let url = art_base + '/ui/repos/tree/General/' + generic_repo + '/' + generic_repo_path + '/' + req.query.name;
                         let email = {
                             to: art_body.email,
                             subject: title , // Subject line
