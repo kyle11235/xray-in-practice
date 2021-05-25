@@ -96,9 +96,22 @@
                 ./deploy.sh
 
         - test
-                
+
+                - ping
+                jfrog rt ping
+
+                - search
                 jfrog rt s xray-project-generic-local/whitelist_request/
+
+                - search those without property/value
+                jfrog rt s xray-project-generic-local/whitelist_request/ --exclude-props status=approved
+
+                - search by property
                 jfrog rt s xray-project-generic-local/whitelist_request/ --props status=approved
+
+                
+                
+
 
 
 
