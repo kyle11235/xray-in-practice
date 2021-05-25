@@ -87,7 +87,18 @@
                 check xray-project-whitelist-local
                 ./02_install_by_xray_settings.sh
 
+- demo wechat & cli integration
 
+        - install
+                
+                git clone https://github.com/kyle11235/simplebot
+                ./setup.sh (get info from wechat platform)
+                ./deploy.sh
+
+        - test
+                
+                jfrog rt s xray-project-generic-local/whitelist_request/
+                jfrog rt s xray-project-generic-local/whitelist_request/ --props status=approved
 
 
 
