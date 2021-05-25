@@ -217,28 +217,42 @@ router.get('/approve', async (req, res) => {
                 }
                 let path = file = file + arr[1] + '/' + arr[2]; // com/alibaba/fastjson/1.2.24
                 file = path + '/' + arr[1] + '-' + arr[2] + '.jar'; // com/alibaba/fastjson/1.2.24/fastjson-1.2.24.jar?content=none
+                pom_file = path + '/' + arr[1] + '-' + arr[2] + '.pom'; // com/alibaba/fastjson/1.2.24/fastjson-1.2.24.pom?content=none
 
-                // 2. trigger download
+                // 2. trigger jar download
                 options.url = api_base + "/download/" + non_blocking_remote_repo + "/" + file + '?content=none';
-                console.log('trigger url=' + options.url);
+                console.log('trigger jar url=' + options.url);
 
                 request.get(options, function (error, response, body) {
                     if(error){
                         console.log(error);
                     } else{
-                        console.log('trigger download good');
+                        console.log('trigger jar download good');
 
-                        // 3. copy to whitelist
-                        options.url = api_base + "/copy/" + non_blocking_remote_repo + "-cache/" + path + '?to=' + whitelist_repo + "/" + path;
-                        console.log('copy url=' + options.url);
-
-                        request.post(options, function (error, response, body) {
+                        // 2. trigger pom download
+                        options.url = api_base + "/download/" + non_blocking_remote_repo + "/" + pom_file + '?content=none';
+                        console.log('trigger pom url=' + options.url);
+                        request.get(options, function (error, response, body) {
                             if(error){
                                 console.log(error);
                             } else{
-                                console.log('copy good');
+                                console.log('trigger pom download good');
+        
+                                // 3. copy to whitelist
+                                options.url = api_base + "/copy/" + non_blocking_remote_repo + "-cache/" + path + '?to=' + whitelist_repo + "/" + path;
+                                console.log('copy url=' + options.url);
+        
+                                request.post(options, function (error, response, body) {
+                                    if(error){
+                                        console.log(error);
+                                    } else{
+                                        console.log('copy good');
+                                    }
+        
+                                });
+        
                             }
-
+        
                         });
 
                     }
