@@ -45,6 +45,11 @@
                 idea -> references -> plugin -> install from disk -> /Users/kyle/workspace/jfrog-idea-plugin/build/JFrog-1.8.x-SNAPSHOT.zip
                 idea -> jfrog -> global config -> artifactory username/password
 
+        - start ngrok
+
+                cd /opt/ngrok
+                ./8000.sh
+
         - start webhook server
 
                 cd ./admin
@@ -56,10 +61,9 @@
                 npm install
                 ./run.sh (will run on 8000)
 
-                cd /opt/ngrok
-                ./8000.sh
+        - set art's webhook outgoing to ngrok
 
-                artifactory webhook -> artifact property add event of xray-project-generic-local -> ngrok's url
+                artifactory webhook -> artifact deploy event -> xray-project-generic-local -> ngrok's url
 
         - test
 

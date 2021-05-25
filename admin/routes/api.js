@@ -21,17 +21,14 @@ router.post('/', async (req, res) => {
     let title = body.data.path;
     let url = body.jpd_origin + '/ui/repos/tree/General/' + body.data.repo_key + '/' + body.data.path;
 
-    // status is updated by admin portal
-    // only handle event triggered from xray IDE plugin
-    if(body.data.property_key != 'status'){
-        
-        let email = {
-            to: process.env.XRAY_DEMO_ADMIN_EMAIL,
-            subject: title , // Subject line
-            html: 'Whitelist Request is recorded here - <a href="'+ url +'">' + url + '</a>' // html body
-        };
-        let sent = mailService.send(email);
-    }
+    let email = {
+        to: process.env.XRAY_DEMO_ADMIN_EMAIL,
+        subject: title , // Subject line
+        html: 'Whitelist Request is recorded here - <a href="'+ url +'">' + url + '</a>' // html body
+    };
+    let sent = mailService.send(email).catch(e => {
+        console.log(e);
+    });
     
     res.json({status: 'success', message: 'ok'});
     return;
@@ -218,7 +215,7 @@ router.get('/approve', async (req, res) => {
                 for(p in groupArr){
                     file = file + groupArr[p] + '/'
                 }
-                path = file = file + arr[1] + '/' + arr[2]; // com/alibaba/fastjson/1.2.24
+                let path = file = file + arr[1] + '/' + arr[2]; // com/alibaba/fastjson/1.2.24
                 file = path + '/' + arr[1] + '-' + arr[2] + '.jar'; // com/alibaba/fastjson/1.2.24/fastjson-1.2.24.jar?content=none
 
                 // 2. trigger download
