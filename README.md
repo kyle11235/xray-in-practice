@@ -1,4 +1,4 @@
-# xray whitelist demo
+# xray in practice
 
 - demo xray blocking download feature
 
