@@ -1,7 +1,7 @@
 # xray in practice
 
         - if you just want to show the demo
-        check the video - xxx
+        check the video - https://v.qq.com/x/page/t3251bywgea.html
 
         - if you want to understand the roles/process/feature of this demo
         check the xray_in_practice.pptx
