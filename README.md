@@ -72,8 +72,8 @@
                 git clone https://github.com/kyle11235/jfrog-idea-plugin (original repo = https://github.com/jfrog/jfrog-idea-plugin)
 
                 open it by idea
-                gradle -> idea -> tasks -> build
-                idea -> references -> plugin -> install from disk -> /Users/kyle/workspace/jfrog-idea-plugin/build/JFrog-1.8.x-SNAPSHOT.zip
+                gradle -> idea -> tasks -> build -> intellij -> buildPlugin
+                idea -> references -> plugin -> install from disk -> /Users/kyle/workspace/jfrog-idea-plugin/build/distributions/JFrog-1.8.x-SNAPSHOT.zip
                 idea -> jfrog -> global config -> your artifactory username/password
 
         - start ngrok (only required when you test it on your desktop)
